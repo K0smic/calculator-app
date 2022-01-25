@@ -1,0 +1,307 @@
+// START RESET CSS
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+// END RESET
+
+// START BORDER
+// https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+//END BORDER
+
+// START SCSS VARIABLES
+$calc-title-grid-height: 3.5rem;
+$calc-screen-grid-height: 8.125rem;
+$calc-body-grid-height: 30.125rem;
+$calc-grid-width: 16.969rem;
+$calc-row-gap: 1.563rem;
+
+$font-default: 2rem;
+// END SCSS VARIABLES
+
+// START PAGE CSS
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+// END PAGE CSS
+
+// START CALC CSS
+.calc {
+  h1 {
+    font-size: $font-default;
+  }
+
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  //   font-size: 2rem; //32px
+
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, $calc-grid-width);
+  grid-template-rows: $calc-title-grid-height $calc-screen-grid-height $calc-body-grid-height;
+  place-content: center;
+  gap: $calc-row-gap 0;
+  background-color: red;
+
+  &__title,
+  &__theme {
+    align-self: center;
+  }
+  &__theme {
+    justify-self: end;
+    display: grid;
+    grid-template-columns: auto 4.5rem;
+    grid-template-rows: 2.875rem;
+    align-items: center;
+    gap: 0 1.5rem;
+
+    .theme__switch {
+      display: grid;
+      grid-template-rows: auto 1.625rem;
+
+      .switch__presets {
+        position: relative;
+        // width: 4.5rem;
+        // height: 1.625rem;
+        width: 60px;
+        height: 25px;
+
+        #switch1,
+        #switch2,
+        #switch3 {
+          position: absolute;
+          z-index: 9;
+          -webkit-appearance: none;
+
+          & + label {
+            &::after {
+              position: absolute;
+              content: "";
+              width: 20px;
+              height: 25px;
+              top: 0;
+              left: 0;
+              z-index: 10;
+            }
+          }
+        }
+        #switch1 {
+          & + label {
+            &::after {
+              left: 2;
+            }
+          }
+          &:checked {
+            & ~ .switch__inner {
+              background-color: red;
+              transition: background-color 200ms ease-in-out;
+              &::after {
+                left: 2;
+                transition: left 200ms ease-in-out;
+              }
+            }
+          }
+        }
+        #switch2 {
+          & + label {
+            &::after {
+              left: 20px;
+            }
+          }
+          &:checked {
+            & ~ .switch__inner {
+              background-color: #fff;
+              transition: background-color 200ms ease-in-out;
+              &::after {
+                left: 20px;
+                transition: left 200ms ease-in-out;
+              }
+            }
+          }
+        }
+        #switch3 {
+          & + label {
+            &::after {
+              left: 40px;
+            }
+          }
+          &:checked {
+            & ~ .switch__inner {
+              background-color: green;
+              transition: background-color 200ms ease-in-out;
+              &::after {
+                left: 40px;
+                transition: left 200ms ease-in-out;
+              }
+            }
+          }
+        }
+
+        .switch__inner {
+          width: 60px;
+          height: 25px;
+          background-color: #fff;
+          border: solid 1px grey;
+          border-radius: 20px;
+
+          &::after {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 2;
+            background-color: #eee;
+            border: solid 1px grey;
+            border-radius: 50%;
+            transition: left 200ms ease-in-out;
+          }
+        }
+      }
+    }
+  }
+  &__screen {
+    background-color: blue;
+  }
+
+  .col-span2 {
+    grid-column: span 2;
+  }
+}
+//END CALC CSS
