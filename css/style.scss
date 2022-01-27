@@ -143,18 +143,50 @@ html {
 //END BORDER
 
 // START SCSS VARIABLES
-$calc-title-grid-height: 3.5rem;
-$calc-screen-grid-height: 8.125rem;
-$calc-body-grid-height: 30.125rem;
-$calc-grid-width: 16.969rem;
+$calc-title-grid-height: 3rem;
+$calc-screen-grid-height: clamp(5.5rem, 4.5757rem + 3.9437vw, 8.125rem);
+$calc-body-grid-height: clamp(26.25rem, 24.8856rem + 5.8216vw, 30.125rem);
+$calc-grid-width: clamp(10.25rem, 7.8952rem + 10.0469vw, 16.9375rem);
 $calc-row-gap: 1.563rem;
 
+$font-small: 0.813rem;
 $font-default: 2rem;
 // END SCSS VARIABLES
 
+//START CSS VARIABLES
+:root {
+  --theme1-bg: hsl(224, 26%, 31%);
+  --theme1-screen-bg: hsl(224, 35%, 15%);
+  --theme1-numpad-bg: hsl(225, 30%, 21%);
+  --theme1-num-bg: hsl(32, 26%, 89%);
+  --theme1-secondary-bg: hsl(224, 21%, 50%);
+  --theme1-equal-bg: hsl(6, 64%, 50%);
+
+  --theme1-primary: hsl(0, 0%, 99%);
+  --theme1-secondary: hsl(180, 100%, 100%);
+  --theme1-button: hsl(7, 64%, 49%);
+  --theme1-num: hsl(222, 13%, 31%);
+  --theme1-equal: hsl(6, 100%, 98%);
+
+  --default-bg: var(--theme1-bg);
+  --default-screen-bg: var(--theme1-screen-bg);
+  --default-numpad-bg: var(--theme1-numpad-bg);
+  --default-num-bg: var(--theme1-num-bg);
+  --default-secondary-bg: var(--theme1-secondary-bg);
+  --default-equal-bg: var(--theme1-equal-bg);
+
+  --default-primary: var(--theme1-primary);
+  --default-secondary: var(--theme1-secondary);
+  --default-button: var(--theme1-button);
+  --default-num: var(--theme1-num);
+  --default-equal: var(--theme1-equal);
+  overflow: hidden;
+}
+//END CSS VARIABLES
+
 // START PAGE CSS
 .container {
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
 }
 // END PAGE CSS
@@ -175,30 +207,39 @@ $font-default: 2rem;
   grid-template-rows: $calc-title-grid-height $calc-screen-grid-height $calc-body-grid-height;
   place-content: center;
   gap: $calc-row-gap 0;
-  background-color: red;
+  background-color: var(--default-bg);
 
   &__title,
   &__theme {
     align-self: center;
+    color: var(--default-primary);
   }
   &__theme {
-    justify-self: end;
+    font-size: $font-small;
     display: grid;
-    grid-template-columns: auto 4.5rem;
+    grid-template-columns: auto 4.438rem;
     grid-template-rows: 2.875rem;
-    align-items: center;
+    place-items: end;
     gap: 0 1.5rem;
 
     .theme__switch {
       display: grid;
-      grid-template-rows: auto 1.625rem;
+      grid-template-rows: auto 1.688rem;
+      place-items: center;
+
+      .switch__number {
+        margin: 0 0 0.6rem 0;
+        font-size: $font-small - 0.063rem;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 0 1rem;
+      }
 
       .switch__presets {
         position: relative;
-        // width: 4.5rem;
-        // height: 1.625rem;
-        width: 60px;
-        height: 25px;
+        //71px and 27px
+        width: 4.438rem;
+        height: 1.688rem;
 
         #switch1,
         #switch2,
@@ -212,7 +253,7 @@ $font-default: 2rem;
               position: absolute;
               content: "";
               width: 20px;
-              height: 25px;
+              height: 1.688rem;
               top: 0;
               left: 0;
               z-index: 10;
@@ -222,7 +263,7 @@ $font-default: 2rem;
         #switch1 {
           & + label {
             &::after {
-              left: 2;
+              left: 0.313rem;
             }
           }
           &:checked {
@@ -230,7 +271,7 @@ $font-default: 2rem;
               background-color: red;
               transition: background-color 200ms ease-in-out;
               &::after {
-                left: 2;
+                left: 0.313rem;
                 transition: left 200ms ease-in-out;
               }
             }
@@ -239,7 +280,7 @@ $font-default: 2rem;
         #switch2 {
           & + label {
             &::after {
-              left: 20px;
+              left: 1.8rem;
             }
           }
           &:checked {
@@ -247,7 +288,7 @@ $font-default: 2rem;
               background-color: #fff;
               transition: background-color 200ms ease-in-out;
               &::after {
-                left: 20px;
+                left: 1.8rem;
                 transition: left 200ms ease-in-out;
               }
             }
@@ -256,7 +297,7 @@ $font-default: 2rem;
         #switch3 {
           & + label {
             &::after {
-              left: 40px;
+              left: 3rem;
             }
           }
           &:checked {
@@ -264,7 +305,7 @@ $font-default: 2rem;
               background-color: green;
               transition: background-color 200ms ease-in-out;
               &::after {
-                left: 40px;
+                left: 3rem;
                 transition: left 200ms ease-in-out;
               }
             }
@@ -272,11 +313,11 @@ $font-default: 2rem;
         }
 
         .switch__inner {
-          width: 60px;
-          height: 25px;
+          width: 4.438rem;
+          height: 1.688rem;
           background-color: #fff;
-          border: solid 1px grey;
-          border-radius: 20px;
+          // border: solid 1px grey;
+          border-radius: 550px;
 
           &::after {
             position: absolute;
@@ -297,7 +338,10 @@ $font-default: 2rem;
     }
   }
   &__screen {
-    background-color: blue;
+    background-color: var(--default-screen-bg);
+  }
+  &__num-pad {
+    background-color: var(--default-numpad-bg);
   }
 
   .col-span2 {
