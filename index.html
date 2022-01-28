@@ -29,9 +29,9 @@
             </div>
             <span>THEME</span>
             <div class="switch__presets">
-              <input type="radio" id="switch1" name="switch" />
+              <input type="radio" id="switch1" name="switch" checked />
               <label for="switch1"></label>
-              <input type="radio" id="switch2" name="switch" checked />
+              <input type="radio" id="switch2" name="switch" />
               <label for="switch2"></label>
               <input type="radio" id="switch3" name="switch" />
               <label for="switch3"></label>
@@ -41,9 +41,12 @@
           </div>
         </div>
 
-        <div class="calc__screen col-span2"></div>
+        <div class="calc__screen col-span2 border grid">
+          <div class="screen__numbers">
+          </div>
+        </div>
 
-        <div class="calc__num-pad col-span2"></div>
+        <div class="calc__num-pad col-span2 border grid"></div>
       </article>
     </main>
   </body>
