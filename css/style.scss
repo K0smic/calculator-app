@@ -151,6 +151,7 @@ $calc-row-gap: 1.5rem;
 
 $font-small: 12px;
 $font-default: 2rem;
+$font-big: 2.7rem;
 // END SCSS VARIABLES
 
 //START CSS VARIABLES
@@ -354,6 +355,10 @@ $font-default: 2rem;
     align-content: center;
     justify-content: end;
 
+    font-size: $font-big;
+    letter-spacing: 4px;
+    color: var(--default-primary);
+
   }
   &__num-pad {
     background-color: var(--default-numpad-bg);
@@ -361,7 +366,7 @@ $font-default: 2rem;
 
   .grid {
     display: grid;
-    padding: 1.938rem;
+    padding: 2.1rem;
   }
 
   .col-span2 {
