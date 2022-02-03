@@ -150,41 +150,56 @@ $calc-grid-width: clamp(10.25rem, 7.8952rem + 10.0469vw, 16.9375rem);
 $calc-row-gap: 1.5rem;
 
 $font-small: 12px;
+$font-action: 19px;
 $font-default: 2rem;
+$font-digits: 2rem;
 $font-big: 2.7rem;
 // END SCSS VARIABLES
 
 //START CSS VARIABLES
 :root {
-  --theme1-bg: hsl(224, 26%, 31%);
+  --theme1-background: hsl(224, 26%, 31%);
+  --theme1-theme-radio-bg: hsl(227, 30%, 21%);
+
   --theme1-screen-bg: hsl(224, 35%, 15%);
+
   --theme1-numpad-bg: hsl(225, 30%, 21%);
-  --theme1-num-bg: hsl(32, 26%, 89%);
-  --theme1-secondary-bg: hsl(224, 21%, 50%);
-  --theme1-equal-bg: hsl(6, 64%, 50%);
-  --theme1-button-bg: hsl(227, 30%, 21%);
+  --theme1-digits-bg: hsl(32, 26%, 89%);
+  --theme1-delete-bg: hsl(224, 21%, 50%);
+  --theme1-result-bg: hsl(6, 64%, 50%);
 
-  --theme1-primary: hsl(0, 0%, 99%);
+  --theme1-logo-screen: hsl(0, 0%, 99%);
   --theme1-theme-select: hsl(212, 19%, 83%);
-  --theme1-secondary: hsl(180, 100%, 100%);
-  --theme1-button: hsl(7, 64%, 49%);
-  --theme1-num: hsl(222, 13%, 31%);
-  --theme1-equal: hsl(6, 100%, 98%);
+  --theme1-theme-radio: hsl(7, 64%, 49%);
 
-  --default-bg: var(--theme1-bg);
+  --theme1-digits: hsl(222, 13%, 31%);
+  --theme1-digits-shadow: hsl(24, 15%, 65%);
+  --theme1-delete: hsl(180, 100%, 100%);
+  --theme1-delete-shadow: hsl(225, 27%, 35%);
+  --theme1-result: hsl(6, 100%, 98%);
+  --theme1-result-shadow: hsl(6, 69%, 34%);
+
+  --default-background: var(--theme1-background);
+  --default-theme-radio-bg: var(--theme1-theme-radio-bg);
+
   --default-screen-bg: var(--theme1-screen-bg);
-  --default-numpad-bg: var(--theme1-numpad-bg);
-  --default-num-bg: var(--theme1-num-bg);
-  --default-secondary-bg: var(--theme1-secondary-bg);
-  --default-equal-bg: var(--theme1-equal-bg);
-  --default-button-bg: var(--theme1-button-bg);
 
-  --default-primary: var(--theme1-primary);
+  --default-numpad-bg: var(--theme1-numpad-bg);
+  --default-digits-bg: var(--theme1-digits-bg);
+  --default-delete-bg: var(--theme1-delete-bg);
+  --default-result-bg: var(--theme1-result-bg);
+
+  --default-logo-screen: var(--theme1-logo-screen);
   --default-theme-select: var(--theme1-theme-select);
-  --default-secondary: var(--theme1-secondary);
-  --default-button: var(--theme1-button);
-  --default-num: var(--theme1-num);
-  --default-equal: var(--theme1-equal);
+  --default-theme-radio: var(--theme1-theme-radio);
+
+  --default-digits: var(--theme1-digits);
+  --default-digits-shadow: var(--theme1-digits-shadow);
+  --default-delete: var(--theme1-delete);
+  --default-delete-shadow: var(--theme1-delete-shadow);
+  --default-result: var(--theme1-result);
+  --default-result-shadow: var(--theme1-result-shadow);
+
   overflow: hidden;
 }
 //END CSS VARIABLES
@@ -197,7 +212,7 @@ $font-big: 2.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--default-bg);
+  background-color: var(--default-background);
 }
 // END PAGE CSS
 
@@ -220,7 +235,7 @@ $font-big: 2.7rem;
   &__title,
   &__theme {
     align-self: center;
-    color: var(--default-primary);
+    color: var(--default-logo-screen);
   }
   &__theme {
     font-size: $font-small;
@@ -284,7 +299,7 @@ $font-big: 2.7rem;
           }
           &:checked {
             & ~ .switch__inner {
-              background-color: var(--default-button-bg);
+              background-color: var(--default-theme-radio-bg);
               transition: background-color 200ms ease-in-out;
               &::after {
                 left: 0.4rem;
@@ -331,7 +346,7 @@ $font-big: 2.7rem;
         .switch__inner {
           width: 4.563rem;
           height: 1.688rem;
-          background-color: var(--default-button);
+          background-color: var(--default-theme-radio);
           border-radius: 1rem;
 
           &::after {
@@ -342,7 +357,7 @@ $font-big: 2.7rem;
             height: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            background-color: var(--default-button);
+            background-color: var(--default-theme-radio);
             // border: solid 1px grey;
             border-radius: 50%;
           }
@@ -356,17 +371,70 @@ $font-big: 2.7rem;
     justify-content: end;
 
     font-size: $font-big;
-    letter-spacing: 4px;
-    color: var(--default-primary);
+    letter-spacing: 2.4px;
+    color: var(--default-logo-screen);
 
+    input {
+      font-family: inherit;
+      font-size: inherit;
+      text-align: end;
+      color: inherit;
+      letter-spacing: inherit;
+
+      width: 100%;
+      padding-right: 0;
+
+      border: none;
+      background-image: none;
+      background-color: transparent;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
   }
   &__num-pad {
     background-color: var(--default-numpad-bg);
+    grid-template-columns: repeat(4, 1fr);
+    align-content: center;
+
+    grid-auto-rows: 3.813rem;
+
+    gap: 1.75rem 1.563rem;
+
+    button {
+      font-family: inherit;
+      color: inherit;
+      letter-spacing: inherit;
+
+      border-radius: 0.7rem;
+      border: 0;
+    }
+    .num-pad__digits:not(.num-pad__delete, .num-pad__result) {
+      background-color: var(--default-digits-bg);
+      color: var(--default-digits);
+      box-shadow: 0 4px var(--default-digits-shadow);
+
+      font-size: $font-digits;
+    }
+    .num-pad__delete,
+    .num-pad__result {
+      color: var(--default-delete);
+
+      font-size: $font-action;
+    }
+    .num-pad__delete {
+      background-color: var(--default-delete-bg);
+      box-shadow: 0 4px var(--default-delete-shadow);
+    }
+    .num-pad__result {
+      background-color: var(--default-result-bg);
+      box-shadow: 0 4px var(--default-result-shadow);
+    }
   }
 
   .grid {
     display: grid;
-    padding: 2.1rem;
+    padding: 1.938rem;
   }
 
   .col-span2 {
