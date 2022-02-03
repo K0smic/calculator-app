@@ -153,11 +153,12 @@ $font-small: 12px;
 $font-action: 19px;
 $font-default: 2rem;
 $font-digits: 2rem;
-$font-big: 2.7rem;
+$font-big: 2.98rem;
 // END SCSS VARIABLES
 
 //START CSS VARIABLES
 :root {
+  // THEME 1 DARK
   --theme1-background: hsl(224, 26%, 31%);
   --theme1-theme-radio-bg: hsl(227, 30%, 21%);
 
@@ -179,27 +180,97 @@ $font-big: 2.7rem;
   --theme1-result: hsl(6, 100%, 98%);
   --theme1-result-shadow: hsl(6, 69%, 34%);
 
-  --default-background: var(--theme1-background);
-  --default-theme-radio-bg: var(--theme1-theme-radio-bg);
+  // THEME 2 - LIGHT
 
-  --default-screen-bg: var(--theme1-screen-bg);
+  --theme2-background: hsl(0, 0%, 90%);
+  --theme2-theme-radio-bg: hsl(0, 10%, 82%);
 
-  --default-numpad-bg: var(--theme1-numpad-bg);
-  --default-digits-bg: var(--theme1-digits-bg);
-  --default-delete-bg: var(--theme1-delete-bg);
-  --default-result-bg: var(--theme1-result-bg);
+  --theme2-screen-bg: hsl(0, 0%, 93%);
 
-  --default-logo-screen: var(--theme1-logo-screen);
-  --default-theme-select: var(--theme1-theme-select);
-  --default-theme-radio: var(--theme1-theme-radio);
+  --theme2-numpad-bg: hsl(0, 6%, 82%);
+  --theme2-digits-bg: hsl(48, 9%, 89%);
+  --theme2-delete-bg: hsl(185, 41%, 37%);
+  --theme2-result-bg: hsl(25, 99%, 39%);
 
-  --default-digits: var(--theme1-digits);
-  --default-digits-shadow: var(--theme1-digits-shadow);
-  --default-delete: var(--theme1-delete);
-  --default-delete-shadow: var(--theme1-delete-shadow);
-  --default-result: var(--theme1-result);
-  --default-result-shadow: var(--theme1-result-shadow);
+  --theme2-logo-screen: hsl(60, 10%, 19%);
+  --theme2-theme-select: hsl(72, 3%, 28%);
+  --theme2-theme-radio: hsl(24, 100%, 40%);
 
+  --theme2-digits: hsl(60, 9%, 19%);
+  --theme2-digits-shadow: hsl(39, 11%, 61%);
+  --theme2-delete: hsl(173, 29%, 94%);
+  --theme2-delete-shadow: hsl(186, 56%, 26%);
+  --theme2-result: hsl(25, 99%, 39%);
+  --theme2-result-shadow: hsl(25, 67%, 32%);
+
+  // THEME 3 - CONTRAST
+
+  --theme3-background: hsl(268, 75%, 9%);
+  --theme3-theme-radio-bg: hsl(268, 75%, 12%);
+
+  --theme3-screen-bg: hsl(269, 74%, 12%);
+
+  --theme3-numpad-bg: hsl(269, 74%, 12%);
+  --theme3-digits-bg: hsl(269, 48%, 20%);
+  --theme3-delete-bg: hsl(281, 88%, 25%);
+  --theme3-result-bg: hsl(176, 100%, 44%);
+
+  --theme3-logo-screen: hsl(50, 92%, 62%);
+  --theme3-theme-select: hsl(53, 76%, 61%);
+  --theme3-theme-radio: hsl(178, 99%, 43%);
+
+  --theme3-digits: hsl(53, 100%, 61%);
+  --theme3-digits-shadow: hsl(289, 68%, 37%);
+  --theme3-delete: hsl(295, 100%, 98%);
+  --theme3-delete-shadow: hsl(285, 91%, 52%);
+  --theme3-result: hsl(191, 67%, 14%);
+  --theme3-result-shadow: hsl(176, 92%, 70%);
+
+  // PAGE CURRENT THEME
+  @media (prefers-color-scheme: dark) {
+    --default-background: var(--theme1-background);
+    --default-theme-radio-bg: var(--theme1-theme-radio-bg);
+
+    --default-screen-bg: var(--theme1-screen-bg);
+
+    --default-numpad-bg: var(--theme1-numpad-bg);
+    --default-digits-bg: var(--theme1-digits-bg);
+    --default-delete-bg: var(--theme1-delete-bg);
+    --default-result-bg: var(--theme1-result-bg);
+
+    --default-logo-screen: var(--theme1-logo-screen);
+    --default-theme-select: var(--theme1-theme-select);
+    --default-theme-radio: var(--theme1-theme-radio);
+
+    --default-digits: var(--theme1-digits);
+    --default-digits-shadow: var(--theme1-digits-shadow);
+    --default-delete: var(--theme1-delete);
+    --default-delete-shadow: var(--theme1-delete-shadow);
+    --default-result: var(--theme1-result);
+    --default-result-shadow: var(--theme1-result-shadow);
+  }
+  @media (prefers-color-scheme: light) {
+    --default-background: var(--theme2-background);
+    --default-theme-radio-bg: var(--theme2-theme-radio-bg);
+
+    --default-screen-bg: var(--theme2-screen-bg);
+
+    --default-numpad-bg: var(--theme2-numpad-bg);
+    --default-digits-bg: var(--theme2-digits-bg);
+    --default-delete-bg: var(--theme2-delete-bg);
+    --default-result-bg: var(--theme2-result-bg);
+
+    --default-logo-screen: var(--theme2-logo-screen);
+    --default-theme-select: var(--theme2-theme-select);
+    --default-theme-radio: var(--theme2-theme-radio);
+
+    --default-digits: var(--theme2-digits);
+    --default-digits-shadow: var(--theme2-digits-shadow);
+    --default-delete: var(--theme2-delete);
+    --default-delete-shadow: var(--theme2-delete-shadow);
+    --default-result: var(--theme2-result);
+    --default-result-shadow: var(--theme2-result-shadow);
+  }
   overflow: hidden;
 }
 //END CSS VARIABLES
@@ -243,6 +314,8 @@ $font-big: 2.7rem;
     grid-template-columns: auto;
     grid-template-rows: 2.875rem;
     color: var(--default-theme-select);
+
+    margin-bottom: 0.375rem;
     .theme__switch {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -251,8 +324,8 @@ $font-big: 2.7rem;
       gap: 0 1.3rem;
 
       span {
-        letter-spacing: 1px;
-        padding-top: 0.1rem;
+        letter-spacing: 0.9 + px;
+        padding-top: 3px;
       }
 
       .switch__number {
@@ -365,15 +438,28 @@ $font-big: 2.7rem;
       }
     }
   }
+
+  .grid {
+    display: grid;
+  }
+
+  .col-span2 {
+    grid-column: span 2;
+  }
+  .border {
+    border-radius: 0.6rem;
+  }
+
   &__screen {
     background-color: var(--default-screen-bg);
     align-content: center;
     justify-content: end;
 
     font-size: $font-big;
-    letter-spacing: 2.4px;
+    letter-spacing: -0.5px;
     color: var(--default-logo-screen);
 
+    padding: 1.938rem;
     input {
       font-family: inherit;
       font-size: inherit;
@@ -382,7 +468,7 @@ $font-big: 2.7rem;
       letter-spacing: inherit;
 
       width: 100%;
-      padding-right: 0;
+      padding-right: 2px;
 
       border: none;
       background-image: none;
@@ -400,6 +486,7 @@ $font-big: 2.7rem;
     grid-auto-rows: 3.813rem;
 
     gap: 1.75rem 1.563rem;
+    padding: 1.938rem 1.938rem 2.126rem 1.938rem;
 
     button {
       font-family: inherit;
@@ -408,6 +495,8 @@ $font-big: 2.7rem;
 
       border-radius: 0.7rem;
       border: 0;
+
+      padding-top: 0.425rem;
     }
     .num-pad__digits:not(.num-pad__delete, .num-pad__result) {
       background-color: var(--default-digits-bg);
@@ -430,18 +519,6 @@ $font-big: 2.7rem;
       background-color: var(--default-result-bg);
       box-shadow: 0 4px var(--default-result-shadow);
     }
-  }
-
-  .grid {
-    display: grid;
-    padding: 1.938rem;
-  }
-
-  .col-span2 {
-    grid-column: span 2;
-  }
-  .border {
-    border-radius: 0.6rem;
   }
 }
 //END CALC CSS
