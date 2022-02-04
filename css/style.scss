@@ -271,7 +271,6 @@ $font-big: 2.98rem;
     --default-result: var(--theme2-result);
     --default-result-shadow: var(--theme2-result-shadow);
   }
-  overflow: hidden;
 }
 //END CSS VARIABLES
 
@@ -345,9 +344,9 @@ $font-big: 2.98rem;
         width: 4.563rem;
         height: 1.688rem;
 
-        #switch1,
-        #switch2,
-        #switch3 {
+        #theme1,
+        #theme2,
+        #theme3 {
           position: absolute;
           z-index: 9;
           -webkit-appearance: none;
@@ -364,7 +363,7 @@ $font-big: 2.98rem;
             }
           }
         }
-        #switch1 {
+        #theme1 {
           & + label {
             &::after {
               left: 0.4rem;
@@ -381,7 +380,7 @@ $font-big: 2.98rem;
             }
           }
         }
-        #switch2 {
+        #theme2 {
           & + label {
             &::after {
               left: 1.8rem;
@@ -389,7 +388,7 @@ $font-big: 2.98rem;
           }
           &:checked {
             & ~ .switch__inner {
-              background-color: hsl(338, 9%, 82%);
+              background-color: var(--default-theme-radio-bg);
               transition: background-color 200ms ease-in-out;
               &::after {
                 left: 1.8rem;
@@ -398,7 +397,7 @@ $font-big: 2.98rem;
             }
           }
         }
-        #switch3 {
+        #theme3 {
           & + label {
             &::after {
               left: 3.2rem;
@@ -406,7 +405,7 @@ $font-big: 2.98rem;
           }
           &:checked {
             & ~ .switch__inner {
-              background-color: hsl(268, 75%, 12%);
+              background-color: var(--default-theme-radio-bg);
               transition: background-color 200ms ease-in-out;
               &::after {
                 left: 3.2rem;
