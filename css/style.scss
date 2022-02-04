@@ -149,6 +149,10 @@ $calc-body-grid-height: clamp(26.25rem, 24.8856rem + 5.8216vw, 30rem);
 $calc-grid-width: clamp(10.25rem, 7.8952rem + 10.0469vw, 16.9375rem);
 $calc-row-gap: 1.5rem;
 
+$numpad-row-gap: clamp(1.0625rem, 0.4824rem + 1.4085vw, 1.9rem) clamp(0.75rem, 0.4637rem + 1.2214vw, 1.688rem);
+$numpad-padding: clamp(1.563rem, 1.1768rem + 0.8458vw, 2.063rem) clamp(1.563rem, 1.1768rem + 0.8458vw, 2.063rem) clamp(1.7rem, 1.1951rem + 1.0344vw, 2.126rem) clamp(1.563rem, 1.1768rem + 0.8458vw, 2.063rem);
+$digits-border-r: clamp(0.3rem, 0.1592rem + 0.6009vw, 0.7rem);
+
 $font-small: 12px;
 $font-action: 19px;
 $font-default: 2rem;
@@ -271,6 +275,7 @@ $font-big: 2.98rem;
     --default-result: var(--theme2-result);
     --default-result-shadow: var(--theme2-result-shadow);
   }
+  overflow: hidden;
 }
 //END CSS VARIABLES
 
@@ -482,17 +487,18 @@ $font-big: 2.98rem;
     grid-template-columns: repeat(4, 1fr);
     align-content: center;
 
-    grid-auto-rows: 3.813rem;
+    grid-auto-rows: 1fr;
+    // grid-auto-rows: 3.813rem;
 
-    gap: 1.75rem 1.563rem;
-    padding: 1.938rem 1.938rem 2.126rem 1.938rem;
+    gap: $numpad-row-gap;
+    padding: $numpad-padding;
 
     button {
       font-family: inherit;
       color: inherit;
       letter-spacing: inherit;
 
-      border-radius: 0.7rem;
+      border-radius: $digits-border-r;
       border: 0;
 
       padding-top: 0.425rem;
