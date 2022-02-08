@@ -231,28 +231,6 @@ $font-big: 2.98rem;
   --theme3-result-shadow: hsl(176, 92%, 70%);
 
   // PAGE CURRENT THEME
-  @media (prefers-color-scheme: dark) {
-    --default-background: var(--theme1-background);
-    --default-theme-radio-bg: var(--theme1-theme-radio-bg);
-
-    --default-screen-bg: var(--theme1-screen-bg);
-
-    --default-numpad-bg: var(--theme1-numpad-bg);
-    --default-digits-bg: var(--theme1-digits-bg);
-    --default-delete-bg: var(--theme1-delete-bg);
-    --default-result-bg: var(--theme1-result-bg);
-
-    --default-logo-screen: var(--theme1-logo-screen);
-    --default-theme-select: var(--theme1-theme-select);
-    --default-theme-radio: var(--theme1-theme-radio);
-
-    --default-digits: var(--theme1-digits);
-    --default-digits-shadow: var(--theme1-digits-shadow);
-    --default-delete: var(--theme1-delete);
-    --default-delete-shadow: var(--theme1-delete-shadow);
-    --default-result: var(--theme1-result);
-    --default-result-shadow: var(--theme1-result-shadow);
-  }
   @media (prefers-color-scheme: light) {
     --default-background: var(--theme2-background);
     --default-theme-radio-bg: var(--theme2-theme-radio-bg);
@@ -274,6 +252,28 @@ $font-big: 2.98rem;
     --default-delete-shadow: var(--theme2-delete-shadow);
     --default-result: var(--theme2-result);
     --default-result-shadow: var(--theme2-result-shadow);
+  }
+  @media (prefers-color-scheme: dark) {
+    --default-background: var(--theme1-background);
+    --default-theme-radio-bg: var(--theme1-theme-radio-bg);
+
+    --default-screen-bg: var(--theme1-screen-bg);
+
+    --default-numpad-bg: var(--theme1-numpad-bg);
+    --default-digits-bg: var(--theme1-digits-bg);
+    --default-delete-bg: var(--theme1-delete-bg);
+    --default-result-bg: var(--theme1-result-bg);
+
+    --default-logo-screen: var(--theme1-logo-screen);
+    --default-theme-select: var(--theme1-theme-select);
+    --default-theme-radio: var(--theme1-theme-radio);
+
+    --default-digits: var(--theme1-digits);
+    --default-digits-shadow: var(--theme1-digits-shadow);
+    --default-delete: var(--theme1-delete);
+    --default-delete-shadow: var(--theme1-delete-shadow);
+    --default-result: var(--theme1-result);
+    --default-result-shadow: var(--theme1-result-shadow);
   }
 }
 /* END CSS VARIABLES */
