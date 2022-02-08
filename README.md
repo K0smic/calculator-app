@@ -31,7 +31,7 @@ Users should be able to:
 <img src="./design/final/desktop.png" width="100%" height="auto"><img src="./design/final/mobile.png" width="100%" height="auto">
 ### Links
 
-- Live Site URL: [Preview](https://github.com/K0smic/calculator-app)
+- Live Site URL: [Preview](k0smic.github.io/calculator-app/)
 
 ## My process
 
