@@ -15,6 +15,7 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
     - [What I learned](#what-i-learned)
     - [Useful resources](#useful-resources)
   - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 ## Overview
 
 ### The challenge
@@ -60,3 +61,7 @@ In this project, I improved my skills with grids, discovered new approaches with
 
 - Github - [K0smic](https://github.com/K0smic)
 - Frontend Mentor - [@K0smic](https://www.frontendmentor.io/profile/K0smic)
+
+## Acknowledgments
+
+Thanks to [Aymin](https://www.frontendmentor.io/profile/ayminahmedpk) for the advice and suggestions.
