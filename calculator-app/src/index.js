@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./assets/styles/style.scss";
-import Calculator from "./components/App/Calculator";
+import Calculator from "./components/Calculator/Calculator";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
