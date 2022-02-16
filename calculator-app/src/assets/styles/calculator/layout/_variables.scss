@@ -1,0 +1,20 @@
+@use "./../../utils/mixins/_functions" as m;
+
+$calc-title-grid-height: 3.2rem;
+$calc-screen-grid-height: m.clampGenerator(5.5rem, 8.125rem);
+$calc-body-grid-height: m.clampGenerator(26.25rem, 30rem);
+$calc-grid-width: m.clampGenerator(10.25rem, 16.9375rem);
+$calc-row-gap: 1.5rem;
+
+$numpad-row-gap: m.clampGenerator(1.0625rem, 1.9rem)
+  m.clampGenerator(0.75rem, 1.688rem);
+$numpad-padding: m.clampGenerator(1.563rem, 2.063rem)
+  m.clampGenerator(1.563rem, 2.063rem) m.clampGenerator(1.7rem, 2.126rem)
+  m.clampGenerator(1.563rem, 2.063rem);
+$digits-border-r: m.clampGenerator(0.3rem, 0.7rem);
+
+$font-small: 12px;
+$font-action: 19px;
+$font-default: 2rem;
+$font-digits: 2rem;
+$font-big: 2.98rem;

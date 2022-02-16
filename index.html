@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
 
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
     <link rel="stylesheet" href="./css/style.min.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Frontend Mentor | Calculator app</title>
   </head>
@@ -29,11 +37,26 @@
             </div>
             <span>THEME</span>
             <div class="switch__presets">
-              <input type="radio" id="theme1" name="theme" aria-label="Theme one" />
+              <input
+                type="radio"
+                id="theme1"
+                name="theme"
+                aria-label="Dark theme"
+              />
               <label for="theme1" aria-hidden="true"></label>
-              <input type="radio" id="theme2" name="theme" aria-label="Theme two" />
+              <input
+                type="radio"
+                id="theme2"
+                name="theme"
+                aria-label="Light theme"
+              />
               <label for="theme2" aria-hidden="true"></label>
-              <input type="radio" id="theme3" name="theme" aria-label="Theme three" />
+              <input
+                type="radio"
+                id="theme3"
+                name="theme"
+                aria-label="Contrast theme"
+              />
               <label for="theme3" aria-hidden="true"></label>
 
               <div class="switch__inner"></div>
@@ -42,7 +65,14 @@
         </div>
 
         <div class="calc__screen col-span2 border grid">
-          <input type="text" class="screen__numbers" id="screen" name="screen" placeholder="399,981" pattern="[^0-9]" />
+          <input
+            type="text"
+            class="screen__numbers"
+            id="screen"
+            name="screen"
+            placeholder="399,981"
+            pattern="[^0-9]"
+          />
         </div>
 
         <div class="calc__num-pad col-span2 border grid">
@@ -62,7 +92,9 @@
           <button class="num-pad__digits">0</button>
           <button class="num-pad__digits">/</button>
           <button class="num-pad__digits">x</button>
-          <button class="num-pad__digits num-pad__delete col-span2">RESET</button>
+          <button class="num-pad__digits num-pad__delete col-span2">
+            RESET
+          </button>
           <button class="num-pad__digits num-pad__result col-span2">=</button>
         </div>
       </article>

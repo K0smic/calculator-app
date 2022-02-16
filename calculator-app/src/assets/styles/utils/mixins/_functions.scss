@@ -1,0 +1,21 @@
+@function toRem($value) {
+  @return ($value / 16) + rem;
+}
+
+@function clampGenerator(
+  $min-value,
+  $max-value,
+  $min-vw: 23.438rem,
+  $max-vw: 90rem
+) {
+  $factor: 1 / ($max-vw - $min-vw) * ($max-value - $min-value);
+  $calc-value: unquote(
+    "#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }"
+  );
+
+  @return clamp(
+    #{if($min-value > $max-value, $max-value, $min-value)},
+    #{$calc-value},
+    #{if($min-value > $max-value, $min-value, $max-value)}
+  );
+}

@@ -1,6 +1,222 @@
 // @use "./theme/variables";
-@use "./theme/classes";
+@use "./theme/_classes";
+@use "./layout/layout";
+@use "./layout/variables" as v;
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
 .calc {
   width: 100%;
   height: 100%;
+
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+}
+
+.calc {
+  h1 {
+    font-size: v.$font-default;
+  }
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+
+  display: grid;
+  grid-template-columns: repeat(2, v.$calc-grid-width);
+  grid-template-rows: v.$calc-title-grid-height v.$calc-screen-grid-height v.$calc-body-grid-height;
+  justify-content: center;
+  gap: v.$calc-row-gap 0;
+
+  &__title,
+  &__theme {
+    align-self: center;
+  }
+  &__theme {
+    font-size: v.$font-small;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 2.875rem;
+
+    margin-bottom: 0.375rem;
+    .theme__switch {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto;
+      place-items: center end;
+      gap: 0 1.3rem;
+
+      span {
+        letter-spacing: 0.9 + px;
+        padding-top: 3px;
+      }
+
+      .switch__number {
+        grid-column-start: 2;
+        justify-self: stretch;
+        text-align: center;
+        font-size: v.$font-small;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        padding: 0 0.15rem 0.2rem;
+      }
+
+      .switch__presets {
+        position: relative;
+        //71px and 27px
+        width: 4.563rem;
+        height: 1.688rem;
+
+        #theme1,
+        #theme2,
+        #theme3 {
+          position: absolute;
+          z-index: 9;
+          -webkit-appearance: none;
+
+          & + label {
+            &::after {
+              position: absolute;
+              content: "";
+              width: 20px;
+              height: 1.688rem;
+              top: 0;
+              left: 0;
+              z-index: 10;
+            }
+          }
+        }
+        #theme1 {
+          & + label {
+            &::after {
+              left: 0.4rem;
+            }
+          }
+          &:checked {
+            & ~ .switch__inner {
+              transition: background-color 200ms ease-in-out;
+              &::after {
+                left: 0.4rem;
+                transition: left 200ms ease-in-out;
+              }
+            }
+          }
+        }
+        #theme2 {
+          & + label {
+            &::after {
+              left: 1.8rem;
+            }
+          }
+          &:checked {
+            & ~ .switch__inner {
+              transition: background-color 200ms ease-in-out;
+              &::after {
+                left: 1.8rem;
+                transition: left 200ms ease-in-out;
+              }
+            }
+          }
+        }
+        #theme3 {
+          & + label {
+            &::after {
+              left: 3.2rem;
+            }
+          }
+          &:checked {
+            & ~ .switch__inner {
+              transition: background-color 200ms ease-in-out;
+              &::after {
+                left: 3.2rem;
+                transition: left 200ms ease-in-out;
+              }
+            }
+          }
+        }
+
+        .switch__inner {
+          width: 4.563rem;
+          height: 1.688rem;
+          border-radius: 1rem;
+
+          &::after {
+            position: absolute;
+            display: block;
+            content: "";
+            width: 1rem;
+            height: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            // border: solid 1px grey;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+  }
+
+  .col-span2 {
+    grid-column: span 2;
+  }
+  .border {
+    border-radius: 0.6rem;
+  }
+
+  &__screen {
+    align-content: center;
+    justify-content: end;
+
+    font-size: v.$font-big;
+    letter-spacing: -0.5px;
+
+    padding: 1.938rem;
+    input {
+      font-family: inherit;
+      font-size: inherit;
+      text-align: end;
+      color: inherit;
+      letter-spacing: inherit;
+
+      width: 100%;
+      padding-right: 2px;
+
+      border: none;
+      background-image: none;
+      background-color: transparent;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+  &__num-pad {
+    grid-template-columns: repeat(4, 1fr);
+    align-content: center;
+
+    grid-auto-rows: 1fr;
+    // grid-auto-rows: 3.813rem;
+
+    gap: v.$numpad-row-gap;
+    padding: v.$numpad-padding;
+
+    button {
+      font-family: inherit;
+      color: inherit;
+      letter-spacing: inherit;
+
+      border-radius: v.$digits-border-r;
+      border: 0;
+
+      padding-top: 0.425rem;
+    }
+    .num-pad__digits:not(.num-pad__delete, .num-pad__result) {
+      font-size: v.$font-digits;
+    }
+    .num-pad__delete,
+    .num-pad__result {
+      font-size: v.$font-action;
+    }
+  }
 }
