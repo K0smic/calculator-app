@@ -1,0 +1,95 @@
+:root {
+  $themes: "theme1", "theme2", "theme3";
+  $theme-pros: (
+    "background": (
+      hsl(224, 26%, 31%),
+      hsl(0, 0%, 90%),
+      hsl(268, 75%, 9%),
+    ),
+    "theme-radio-bg": (
+      hsl(227, 30%, 21%),
+      hsl(0, 10%, 82%),
+      hsl(268, 75%, 12%),
+    ),
+    "screen-bg": (
+      hsl(224, 35%, 15%),
+      hsl(0, 0%, 93%),
+      hsl(269, 74%, 12%),
+    ),
+    "numpad-bg": (
+      hsl(225, 30%, 21%),
+      hsl(0, 6%, 82%),
+      hsl(269, 74%, 12%),
+    ),
+    "digits-bg": (
+      hsl(32, 26%, 89%),
+      hsl(48, 9%, 89%),
+      hsl(269, 48%, 20%),
+    ),
+    "delete-bg": (
+      hsl(224, 21%, 50%),
+      hsl(185, 41%, 37%),
+      hsl(281, 88%, 25%),
+    ),
+    "result-bg": (
+      hsl(6, 64%, 50%),
+      hsl(25, 99%, 39%),
+      hsl(176, 100%, 44%),
+    ),
+    "logo-screen": (
+      hsl(0, 0%, 99%),
+      hsl(60, 10%, 19%),
+      hsl(50, 92%, 62%),
+    ),
+    "theme-select": (
+      hsl(212, 19%, 83%),
+      hsl(72, 3%, 28%),
+      hsl(53, 76%, 61%),
+    ),
+    "theme-radio": (
+      hsl(7, 64%, 49%),
+      hsl(24, 100%, 40%),
+      hsl(178, 99%, 43%),
+    ),
+    "digits": (
+      hsl(222, 13%, 31%),
+      hsl(60, 9%, 19%),
+      hsl(53, 100%, 61%),
+    ),
+    "digits-shadow": (
+      hsl(24, 15%, 65%),
+      hsl(39, 11%, 61%),
+      hsl(289, 68%, 37%),
+    ),
+    "delete": (
+      hsl(180, 100%, 100%),
+      hsl(173, 29%, 94%),
+      hsl(295, 100%, 98%),
+    ),
+    "delete-shadow": (
+      hsl(225, 27%, 35%),
+      hsl(186, 56%, 26%),
+      hsl(285, 91%, 52%),
+    ),
+    "result": (
+      hsl(6, 100%, 98%),
+      hsl(25, 99%, 39%),
+      hsl(191, 67%, 14%),
+    ),
+    "result-shadow": (
+      hsl(6, 69%, 34%),
+      hsl(25, 67%, 32%),
+      hsl(176, 92%, 70%),
+    ),
+  );
+  /* For each n. of themes */
+  @for $i from 1 through length($themes) {
+    $theme: nth($themes, $i);
+    /* get the class name and the equal index n. of the hsl() from $theme-props */
+    @each $class, $color in $theme-pros {
+      $color: nth($color, $i);
+      /* and generate the css var */
+      --#{$theme}-#{$class}: #{$color};
+    }
+  }
+}
