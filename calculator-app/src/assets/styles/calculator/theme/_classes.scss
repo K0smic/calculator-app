@@ -1,0 +1,13 @@
+@use "./_variables" as v;
+
+/* Generate all the theme classes */
+@each $class, $color in v.$theme-props {
+  .#{$class} {
+    /* if contains bg use background-color property alse use color */
+    @if str-index($class, "bg") or str-index($class, "background") {
+      background-color: var(--theme1-#{$class});
+    } @else {
+      color: var(--theme1-#{$class});
+    }
+  }
+}

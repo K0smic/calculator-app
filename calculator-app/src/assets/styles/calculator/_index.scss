@@ -1,1 +1,6 @@
-@use "./theme/variables";
+// @use "./theme/variables";
+@use "./theme/classes";
+.calc {
+  width: 100%;
+  height: 100%;
+}
