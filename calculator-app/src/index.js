@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <main className="container">
+    <main className="container grid">
       <Calculator />
     </main>
   </React.StrictMode>,

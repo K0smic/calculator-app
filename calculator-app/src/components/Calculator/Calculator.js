@@ -1,37 +1,22 @@
 function Calculator() {
   return (
-    <article className="calc background">
-      <h1 className="calc__title logo-screen">calc</h1>
+    <article className="calc grid background">
+      <h1 className="calc__title font-3 logo-screen">calc</h1>
 
-      <div className="calc__theme logo-screen">
+      <div className="calc__theme font-1 theme-select logo-screen">
         <div className="theme__switch">
-          <div className="switch__number">
+          <div className="switch__number font-1">
             <span>1</span>
             <span>2</span>
             <span>3</span>
           </div>
           <span>THEME</span>
           <div className="switch__presets theme-radio-bg">
-            <input
-              type="radio"
-              id="theme1"
-              name="theme"
-              aria-label="Dark theme"
-            />
+            <input type="radio" id="theme1" name="theme" aria-label="Dark theme" checked />
             <label htmlFor="theme1" aria-hidden="true"></label>
-            <input
-              type="radio"
-              id="theme2"
-              name="theme"
-              aria-label="Light theme"
-            />
+            <input type="radio" id="theme2" name="theme" aria-label="Light theme" />
             <label htmlFor="theme2" aria-hidden="true"></label>
-            <input
-              type="radio"
-              id="theme3"
-              name="theme"
-              aria-label="Contrast theme"
-            />
+            <input type="radio" id="theme3" name="theme" aria-label="Contrast theme" />
             <label htmlFor="theme3" aria-hidden="true"></label>
 
             <div className="switch__inner"></div>
@@ -39,7 +24,7 @@ function Calculator() {
         </div>
       </div>
 
-      <div className="calc__screen screen-bg logo-screen col-span2 border grid">
+      <div className="calc__screen screen-bg logo-screen font-4 col-span2 border grid">
         <input
           type="text"
           className="screen__numbers"
@@ -50,27 +35,29 @@ function Calculator() {
         />
       </div>
 
-      <div className="calc__num-pad col-span2 border grid">
-        <button className="num-pad__digits digits">7</button>
-        <button className="num-pad__digits digits">8</button>
-        <button className="num-pad__digits digits">9</button>
-        <button className="num-pad__digits delete num-pad__delete">DEL</button>
-        <button className="num-pad__digits digits">4</button>
-        <button className="num-pad__digits digits">5</button>
-        <button className="num-pad__digits digits">6</button>
-        <button className="num-pad__digits digits">+</button>
-        <button className="num-pad__digits digits">1</button>
-        <button className="num-pad__digits digits">2</button>
-        <button className="num-pad__digits digits">3</button>
-        <button className="num-pad__digits digits">-</button>
-        <button className="num-pad__digits digits">.</button>
-        <button className="num-pad__digits digits">0</button>
-        <button className="num-pad__digits digits">/</button>
-        <button className="num-pad__digits digits">x</button>
-        <button className="num-pad__digits delete num-pad__delete col-span2">
+      <div className="calc__num-pad numpad-bg col-span2 border grid">
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">7</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">8</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">9</button>
+        <button className="num-pad__digits delete delete-shadow delete-bg num-pad__delete font-2">
+          DEL
+        </button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">4</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">5</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">6</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">+</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">1</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">2</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">3</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">-</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">.</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">0</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">/</button>
+        <button className="num-pad__digits digits digits-shadow digits-bg font-3">x</button>
+        <button className="num-pad__digits delete delete-shadow delete-bg num-pad__delete font-2 col-span2">
           RESET
         </button>
-        <button className="num-pad__digits result num-pad__result col-span2">
+        <button className="num-pad__digits result result-shadow result-bg font-2 num-pad__result col-span2">
           =
         </button>
       </div>

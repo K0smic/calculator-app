@@ -1,11 +1,16 @@
-@use "./_variables" as v;
+@use "./_variables" as tv;
 
 /* Generate all the theme classes */
-@each $class, $color in v.$theme-props {
+@each $class, $color in tv.$theme-props {
   .#{$class} {
-    /* if contains bg use background-color property else use color */
-    @if str-index($class, "bg") or str-index($class, "background") {
+    /* if contains bg use background-color, same for shadow property else use color */
+    @if str-index($class, "bg") or
+      str-index($class, "background") and not
+      str-index($class, "shadow")
+    {
       background-color: var(--theme1-#{$class});
+    } @else if str-index($class, "shadow") {
+      box-shadow: 0 4px var(--theme1-#{$class});
     } @else {
       color: var(--theme1-#{$class});
     }

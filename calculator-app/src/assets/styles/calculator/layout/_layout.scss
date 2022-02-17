@@ -1,6 +1,36 @@
-@use "./_variables";
+@use "./../../utils/mixins/functions" as f;
+@use "./_variables" as v;
 
 .calc {
+  min-width: 100%;
+  min-height: 100%;
+  margin-top: auto;
+
+  // place-content: center;
+  align-content: center;
+  justify-content: center;
+  grid-template: max-content v.$calc-screen-height v.$calc-body-height / repeat(2, v.$calc-width);
+  gap: v.$calc-row-gap 0;
+
+  &__screen {
+    align-content: center;
+    justify-content: end;
+  }
+
+  &__num-pad {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    /* column distance 24px (1.5rem) row distance 24+4(1.75rem) for the box-shadow */
+    gap: 1.75rem 1.5rem;
+
+    align-content: center;
+    padding: 2rem 2rem 2.188rem f.toRem(30);
+  }
+}
+
+.grid {
   display: grid;
-  place-content: center;
+}
+.col-span2 {
+  grid-column: span 2;
 }
