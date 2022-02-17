@@ -3,9 +3,9 @@ function Calculator() {
     <article className="calc grid background">
       <h1 className="calc__title font-3 logo-screen">calc</h1>
 
-      <div className="calc__theme font-1 theme-select logo-screen">
-        <div className="theme__switch">
-          <div className="switch__number font-1">
+      <div className="calc__theme grid font-1 theme-select logo-screen">
+        <div className="theme__switch grid">
+          <div className="switch__number grid font-1">
             <span>1</span>
             <span>2</span>
             <span>3</span>
