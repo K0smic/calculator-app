@@ -12,7 +12,7 @@ function Calculator() {
           </div>
           <span>THEME</span>
           <div className="switch__presets theme-radio-bg">
-            <input type="radio" id="theme1" name="theme" aria-label="Dark theme" checked />
+            <input type="radio" id="theme1" name="theme" aria-label="Dark theme" />
             <label htmlFor="theme1" aria-hidden="true"></label>
             <input type="radio" id="theme2" name="theme" aria-label="Light theme" />
             <label htmlFor="theme2" aria-hidden="true"></label>
@@ -24,15 +24,18 @@ function Calculator() {
         </div>
       </div>
 
-      <div className="calc__screen screen-bg logo-screen font-4 col-span2 border grid">
-        <input
+      <div className="calc__screen screen-bg logo-screen col-span2 border grid">
+        {/* <input
           type="text"
           className="screen__numbers"
           id="screen"
           name="screen"
           placeholder="399,981"
           pattern="[^0-9]"
-        />
+        /> */}
+        <div className="screen__numbers font-4" id="screen">
+          399,981
+        </div>
       </div>
 
       <div className="calc__num-pad numpad-bg col-span2 border grid">
