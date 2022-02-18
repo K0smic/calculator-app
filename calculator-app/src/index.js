@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./assets/styles/style.scss";
+import "./assets/styles/index.scss";
 import Calculator from "./components/Calculator/Calculator";
 import reportWebVitals from "./reportWebVitals";
 

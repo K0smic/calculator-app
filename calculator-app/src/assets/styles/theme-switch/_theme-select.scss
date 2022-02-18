@@ -1,5 +1,4 @@
-@use "./variables" as lv;
-@use "./../../utils/mixins/functions" as f;
+@use "./../utils/mixins/functions" as f;
 .theme__switch {
   span {
     letter-spacing: 0.9px;
@@ -10,7 +9,6 @@
     position: relative;
     width: f.toRem(71);
     height: f.toRem(26);
-    border-radius: 20rem;
 
     #theme1,
     #theme2,
@@ -87,7 +85,6 @@
       width: 100%;
       height: 100%;
       background-color: var(--theme1-theme-radio);
-      border-radius: 1rem;
 
       &::after {
         position: absolute;

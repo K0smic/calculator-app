@@ -1,8 +1,5 @@
-// @use "./theme/variables";
-@use "./theme/_classes" as tc;
-@use "./layout/layout";
-@use "./layout/theme-select";
-@use "./layout/_classes" as lc;
+@use "./layout/index-layout";
+
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
 
 .calc {

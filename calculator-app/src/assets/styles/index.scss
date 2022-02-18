@@ -1,6 +1,7 @@
 @use "./default/remove-style";
 @use "./default/border";
-@use "./calculator/index";
+@use "./calculator/_calculator";
+@use "./theme-switch/index-theme";
 
 .container {
   min-height: 100vh;
