@@ -4,6 +4,7 @@ import BtnDigit from "./BtnDigit";
 import { BtnDelete, BtnClear, BtnResult } from "./BtnAction";
 import BtnOperation from "./BtnOperation";
 
+/* Filter: used for the button actions */
 export const ACTIONS = {
   DIGIT: "ins-digit",
   OPERATION: "chs-operation",
@@ -11,14 +12,8 @@ export const ACTIONS = {
   DELETE: "delete",
   RESULT: "result",
 };
-
+/* React Hook: take the current state, the type of action (switch case) and the payload (digit or operator) from button */
 function reducer(state, { type, payload }) {
-  console.log("State:");
-  console.log(state);
-  console.log("Type:");
-  console.log(type);
-  console.log("Payload:");
-  console.log(payload);
   switch (type) {
     case ACTIONS.DIGIT:
       if (payload.digit === "0" && state.currentOperand === undefined) return state;
@@ -33,25 +28,27 @@ function reducer(state, { type, payload }) {
     case ACTIONS.OPERATION:
       return {
         ...state,
-        currentOperand: 0,
+        currentOperand: "",
         previousOperand: `${state.currentOperand}`,
         operator: `${payload.operator}`,
       };
 
     case ACTIONS.DELETE:
-      if (state.currentOperand.length === 1) return (state.currentOperand = "0");
+      if (state.currentOperand.length === 1) return (state.currentOperand = "");
       return {
         ...state,
-        currentOperand: `${state.currentOperand ? state.currentOperand.slice(0, -1) : "0"}`,
+        currentOperand: `${state.currentOperand ? state.currentOperand.slice(0, -1) : ""}`,
       };
 
     case ACTIONS.CLEAR:
-      return { ...state, currentOperand: 0 };
+      return {};
 
     case ACTIONS.RESULT:
       return {
         ...state,
         currentOperand: `${evaluate(state)}`,
+        previousOperand: "",
+        operator: "",
       };
 
     default:
@@ -59,6 +56,7 @@ function reducer(state, { type, payload }) {
   }
 }
 
+/* Convert the inputs and generate the output result */
 function evaluate({ currentOperand, previousOperand, operator }) {
   const prev = parseFloat(previousOperand);
   const curr = parseFloat(currentOperand);
@@ -77,18 +75,17 @@ function evaluate({ currentOperand, previousOperand, operator }) {
       result = prev * curr;
       break;
     case "/":
-      if (prev === 0 || curr === 0) return "0";
+      if (prev === 0 || curr === 0) return "";
       result = prev / curr;
       break;
     default:
       return "";
   }
-  console.log(prev, curr);
   return result.toString();
 }
 
 function Calculator() {
-  const [{ currentOperand = "399,981" }, dispatch] = useReducer(reducer, {});
+  const [{ currentOperand }, dispatch] = useReducer(reducer, {});
 
   return (
     <article className="calc grid background">
@@ -98,7 +95,7 @@ function Calculator() {
 
       <div className="calc__screen screen-bg logo-screen col-span2 border grid">
         <output className="screen__result font-4" id="screen">
-          {currentOperand}
+          {currentOperand || 0}
         </output>
       </div>
 

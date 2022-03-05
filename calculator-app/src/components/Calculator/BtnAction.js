@@ -5,7 +5,7 @@ export function BtnDelete({ dispatch, action }) {
     <button
       className="delete delete-shadow delete-bg font-2"
       onClick={() => {
-        dispatch({ type: ACTIONS.DELETE || "", payload: { action } });
+        dispatch({ type: ACTIONS.DELETE || "" });
       }}
     >
       {action}
@@ -18,7 +18,7 @@ export function BtnClear({ dispatch, action }) {
     <button
       className="delete delete-shadow delete-bg font-2 col-span2"
       onClick={() => {
-        dispatch({ type: ACTIONS.CLEAR || "", payload: { action } });
+        dispatch({ type: ACTIONS.CLEAR || "" });
       }}
     >
       {action}
@@ -31,7 +31,7 @@ export function BtnResult({ dispatch, action }) {
     <button
       className="result result-shadow result-bg font-2 col-span2"
       onClick={() => {
-        dispatch({ type: ACTIONS.RESULT || "", payload: { action } });
+        dispatch({ type: ACTIONS.RESULT || "" });
       }}
     >
       {action}
