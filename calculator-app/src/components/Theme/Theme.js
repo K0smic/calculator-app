@@ -15,7 +15,6 @@ function Theme() {
           <label htmlFor="theme2" aria-hidden="true"></label>
           <input type="radio" id="theme3" name="theme" aria-label="Contrast theme" />
           <label htmlFor="theme3" aria-hidden="true"></label>
-
           <div className="switch__inner border-1"></div>
         </div>
       </div>

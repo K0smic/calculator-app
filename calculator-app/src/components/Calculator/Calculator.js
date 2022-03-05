@@ -1,6 +1,95 @@
+import { useReducer } from "react";
 import Theme from "../Theme/Theme";
+import BtnDigit from "./BtnDigit";
+import { BtnDelete, BtnClear, BtnResult } from "./BtnAction";
+import BtnOperation from "./BtnOperation";
+
+export const ACTIONS = {
+  DIGIT: "ins-digit",
+  OPERATION: "chs-operation",
+  CLEAR: "clear",
+  DELETE: "delete",
+  RESULT: "result",
+};
+
+function reducer(state, { type, payload }) {
+  console.log("State:");
+  console.log(state);
+  console.log("Type:");
+  console.log(type);
+  console.log("Payload:");
+  console.log(payload);
+  switch (type) {
+    case ACTIONS.DIGIT:
+      if (payload.digit === "0" && state.currentOperand === undefined) return state;
+      if (payload.digit === "." && state.currentOperand === undefined) return state;
+      if (payload.digit === "." && state.currentOperand && state.currentOperand.includes("."))
+        return state;
+      return {
+        ...state,
+        currentOperand: `${state.currentOperand || ""}${payload.digit}`,
+      };
+
+    case ACTIONS.OPERATION:
+      return {
+        ...state,
+        currentOperand: 0,
+        previousOperand: `${state.currentOperand}`,
+        operator: `${payload.operator}`,
+      };
+
+    case ACTIONS.DELETE:
+      if (state.currentOperand.length === 1) return (state.currentOperand = "0");
+      return {
+        ...state,
+        currentOperand: `${state.currentOperand ? state.currentOperand.slice(0, -1) : "0"}`,
+      };
+
+    case ACTIONS.CLEAR:
+      return { ...state, currentOperand: 0 };
+
+    case ACTIONS.RESULT:
+      return {
+        ...state,
+        currentOperand: `${evaluate(state)}`,
+      };
+
+    default:
+      return console.error("Default case | What!?");
+  }
+}
+
+function evaluate({ currentOperand, previousOperand, operator }) {
+  const prev = parseFloat(previousOperand);
+  const curr = parseFloat(currentOperand);
+  let result = "";
+
+  if (isNaN(prev) || isNaN(curr)) return "";
+
+  switch (operator) {
+    case "+":
+      result = prev + curr;
+      break;
+    case "-":
+      result = prev - curr;
+      break;
+    case "x":
+      result = prev * curr;
+      break;
+    case "/":
+      if (prev === 0 || curr === 0) return "0";
+      result = prev / curr;
+      break;
+    default:
+      return "";
+  }
+  console.log(prev, curr);
+  return result.toString();
+}
 
 function Calculator() {
+  const [{ currentOperand = "399,981" }, dispatch] = useReducer(reducer, {});
+
   return (
     <article className="calc grid background">
       <h1 className="calc__title font-3 logo-screen">calc</h1>
@@ -8,44 +97,30 @@ function Calculator() {
       <Theme />
 
       <div className="calc__screen screen-bg logo-screen col-span2 border grid">
-        {/* <input
-          type="text"
-          className="screen__numbers"
-          id="screen"
-          name="screen"
-          placeholder="399,981"
-          pattern="[^0-9]"
-        /> */}
-        <div className="screen__numbers font-4" id="screen">
-          399,981
-        </div>
+        <output className="screen__result font-4" id="screen">
+          {currentOperand}
+        </output>
       </div>
 
-      <div className="calc__num-pad numpad-bg col-span2 border grid">
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">7</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">8</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">9</button>
-        <button className="num-pad__digits delete delete-shadow delete-bg num-pad__delete font-2">
-          DEL
-        </button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">4</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">5</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">6</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">+</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">1</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">2</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">3</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">-</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">.</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">0</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">/</button>
-        <button className="num-pad__digits digits digits-shadow digits-bg font-3">x</button>
-        <button className="num-pad__digits delete delete-shadow delete-bg num-pad__delete font-2 col-span2">
-          RESET
-        </button>
-        <button className="num-pad__digits result result-shadow result-bg font-2 num-pad__result col-span2">
-          =
-        </button>
+      <div className="calc__num-pad numpad-bg col-span2 border grid font-3">
+        <BtnDigit dispatch={dispatch} digit={7} />
+        <BtnDigit dispatch={dispatch} digit={8} />
+        <BtnDigit dispatch={dispatch} digit={9} />
+        <BtnDelete dispatch={dispatch} action={"DEL"} />
+        <BtnDigit dispatch={dispatch} digit={4} />
+        <BtnDigit dispatch={dispatch} digit={5} />
+        <BtnDigit dispatch={dispatch} digit={6} />
+        <BtnOperation dispatch={dispatch} operator={"+"} />
+        <BtnDigit dispatch={dispatch} digit={1} />
+        <BtnDigit dispatch={dispatch} digit={2} />
+        <BtnDigit dispatch={dispatch} digit={3} />
+        <BtnOperation dispatch={dispatch} operator={"-"} />
+        <BtnDigit dispatch={dispatch} digit={"."} />
+        <BtnDigit dispatch={dispatch} digit={0} />
+        <BtnOperation dispatch={dispatch} operator={"/"} />
+        <BtnOperation dispatch={dispatch} operator={"x"} />
+        <BtnClear dispatch={dispatch} action={"RESET"} />
+        <BtnResult dispatch={dispatch} action={"="} />
       </div>
     </article>
   );
